@@ -2,16 +2,7 @@ import React from "react";
 import Entry from "./Entry";
 import emojipedia from "../emojipedia";
 
-function createEntry(emojiTerm) {
-  return (
-    <Entry
-      key={emojiTerm.id}
-      emoji={emojiTerm.emoji}
-      name={emojiTerm.name}
-      description={emojiTerm.meaning}
-    />
-  );
-}
+
 
 function App() {
   return (
@@ -21,7 +12,16 @@ function App() {
       </h1>
 
       <dl className="dictionary">
-        {emojipedia.map(createEntry)}
+        {emojipedia.map( emojiTerm => (
+          // Allowed because though we can put this on seperate lines, this
+          // is really just 1 element so we can use an arrow function.
+          <Entry
+            key={emojiTerm.id}
+            emoji={emojiTerm.emoji}
+            name={emojiTerm.name}
+            description={emojiTerm.meaning}
+          />
+        ))}
       </dl>
     </div>
   );
